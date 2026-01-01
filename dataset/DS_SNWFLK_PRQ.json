@@ -1,0 +1,23 @@
+{
+	"name": "DS_SNWFLK_PRQ",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SNWFLK_PRQ1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@concat(\n\t'snowflake/',\n\tformatDateTime(utcNow(), 'yyyy'), '/',\n\tformatDateTime(utcNow(), 'MM'), '/',\n\tformatDateTime(utcNow(), 'dd')\n)",
+					"type": "Expression"
+				},
+				"container": "input"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
