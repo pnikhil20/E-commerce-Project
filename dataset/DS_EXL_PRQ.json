@@ -1,8 +1,8 @@
 {
-	"name": "DS_CSV_PRQ",
+	"name": "DS_EXL_PRQ",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_CSV_PRQ",
+			"referenceName": "LS_EXL_PRQ",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@concat(\n\t'csv/',\n\tformatDateTime(utcNow(), 'yyyy'), '/',\n\tformatDateTime(utcNow(), 'MM'), '/',\n\tformatDateTime(utcNow(), 'dd')\n)",
+					"value": "@concat(\n\t'excel/',\n\tformatDateTime(utcNow(), 'yyyy'), '/',\n\tformatDateTime(utcNow(), 'MM'), '/',\n\tformatDateTime(utcNow(), 'dd')\n)",
 					"type": "Expression"
 				},
 				"fileSystem": "input"
