@@ -1,0 +1,44 @@
+{
+	"name": "DS_BULK_PRQ",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BULK_PRQ1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat(\n\t'bulk/',\n\tformatDateTime(utcNow(), 'yyyy'), '/',\n\tformatDateTime(utcNow(), 'MM'), '/',\n\tformatDateTime(utcNow(), 'dd')\n)",
+					"type": "Expression"
+				},
+				"fileSystem": "input"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "order_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "payment_sequential",
+				"type": "UTF8"
+			},
+			{
+				"name": "payment_type",
+				"type": "UTF8"
+			},
+			{
+				"name": "payment_installments",
+				"type": "UTF8"
+			},
+			{
+				"name": "payment_value",
+				"type": "UTF8"
+			}
+		]
+	}
+}
