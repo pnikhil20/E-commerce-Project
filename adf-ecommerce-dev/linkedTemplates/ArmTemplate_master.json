@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_BULK'"
 		},
+		"LS_BULK_PRQ1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_BULK_PRQ1'"
+		},
 		"LS_CSV_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_CSV'"
@@ -54,6 +58,10 @@
 		"LS_BULK_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_BULK_PRQ1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"LS_CSV_properties_typeProperties_url": {
 			"type": "string",
@@ -129,6 +137,9 @@
 					"LS_BULK_accountKey": {
 						"value": "[parameters('LS_BULK_accountKey')]"
 					},
+					"LS_BULK_PRQ1_accountKey": {
+						"value": "[parameters('LS_BULK_PRQ1_accountKey')]"
+					},
 					"LS_CSV_accountKey": {
 						"value": "[parameters('LS_CSV_accountKey')]"
 					},
@@ -161,6 +172,9 @@
 					},
 					"LS_BULK_properties_typeProperties_url": {
 						"value": "[parameters('LS_BULK_properties_typeProperties_url')]"
+					},
+					"LS_BULK_PRQ1_properties_typeProperties_url": {
+						"value": "[parameters('LS_BULK_PRQ1_properties_typeProperties_url')]"
 					},
 					"LS_CSV_properties_typeProperties_url": {
 						"value": "[parameters('LS_CSV_properties_typeProperties_url')]"
@@ -198,6 +212,26 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adf-ecommerce-dev_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-ecommerce-dev_ArmTemplate_0')]"
+			]
 		}
 	]
 }

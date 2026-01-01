@@ -8,6 +8,9 @@
 		"LS_BULK_accountKey": {
 			"value": ""
 		},
+		"LS_BULK_PRQ1_accountKey": {
+			"value": ""
+		},
 		"LS_CSV_accountKey": {
 			"value": ""
 		},
@@ -40,6 +43,9 @@
 		},
 		"LS_BULK_properties_typeProperties_url": {
 			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_BULK_PRQ1_properties_typeProperties_url": {
+			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"LS_CSV_properties_typeProperties_url": {
 			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
