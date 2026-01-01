@@ -68,6 +68,9 @@
 		"LS_JSON_PRQ_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
+		"LS_REST_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/IxIFRQ/data"
+		},
 		"LS_REST_PRQ1_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},

@@ -13,6 +13,112 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_JSON')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_JSON",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "json",
+						"fileSystem": "input"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"_id": {
+							"type": "string"
+						},
+						"index": {
+							"type": "integer"
+						},
+						"guid": {
+							"type": "string"
+						},
+						"isActive": {
+							"type": "boolean"
+						},
+						"balance": {
+							"type": "string"
+						},
+						"picture": {
+							"type": "string"
+						},
+						"age": {
+							"type": "integer"
+						},
+						"eyeColor": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"gender": {
+							"type": "string"
+						},
+						"company": {
+							"type": "string"
+						},
+						"email": {
+							"type": "string"
+						},
+						"phone": {
+							"type": "string"
+						},
+						"address": {
+							"type": "string"
+						},
+						"about": {
+							"type": "string"
+						},
+						"registered": {
+							"type": "string"
+						},
+						"latitude": {
+							"type": "number"
+						},
+						"longitude": {
+							"type": "number"
+						},
+						"tags": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"friends": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "integer"
+									},
+									"name": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"greeting": {
+							"type": "string"
+						},
+						"favoriteFruit": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_JSON_PRQ')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -56,6 +162,114 @@
 						"type": "UTF8"
 					}
 				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_REST')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_REST",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_REST_PRQ')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_REST_PRQ1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "@concat(\n\t'rest/',\n\tformatDateTime(utcNow(), 'yyyy'), '/',\n\tformatDateTime(utcNow(), 'MM'), '/',\n\tformatDateTime(utcNow(), 'dd')\n)",
+							"type": "Expression"
+						},
+						"fileSystem": "input"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "geolocation_zip_code_prefix",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_lat",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_lng",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_city",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_state",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_SNOWFLAKE')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SNOWFLAKE",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SnowflakeV2Table",
+				"schema": [],
+				"typeProperties": {
+					"schema": "AZURE_INTEGRATION",
+					"table": "ORDER_ITEMS_DATASET"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_SNWFLK_PRQ')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SNWFLK_PRQ1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": {
+							"value": "@concat(\n\t'snowflake/',\n\tformatDateTime(utcNow(), 'yyyy'), '/',\n\tformatDateTime(utcNow(), 'MM'), '/',\n\tformatDateTime(utcNow(), 'dd')\n)",
+							"type": "Expression"
+						},
+						"container": "input"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
 			},
 			"dependsOn": []
 		},
@@ -339,7 +553,135 @@
 				"annotations": []
 			},
 			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_JSON')]",
 				"[concat(variables('factoryId'), '/datasets/DS_JSON_PRQ')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_RESTAPI')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CPY_REST_PRQ",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:01:40",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_REST",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_REST_PRQ",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_REST')]",
+				"[concat(variables('factoryId'), '/datasets/DS_REST_PRQ')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_SNOWFLAKE')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CPY_SNWFLK_PRQ",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SnowflakeV2Source",
+								"exportSettings": {
+									"type": "SnowflakeExportCopyCommand"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_SNOWFLAKE",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_SNWFLK_PRQ",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_SNOWFLAKE')]",
+				"[concat(variables('factoryId'), '/datasets/DS_SNWFLK_PRQ')]"
 			]
 		}
 	]

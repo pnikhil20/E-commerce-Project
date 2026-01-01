@@ -91,6 +91,10 @@
 			"type": "string",
 			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
+		"LS_REST_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://retoolapi.dev/IxIFRQ/data"
+		},
 		"LS_REST_PRQ1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
@@ -261,6 +265,21 @@
 						"type": "SecureString",
 						"value": "[parameters('LS_JSON_PRQ_accountKey')]"
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_REST')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('LS_REST_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": false,
+					"authenticationType": "Anonymous"
 				}
 			},
 			"dependsOn": []
@@ -625,114 +644,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_EXL_PRQ')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_JSON')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_JSON",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "json",
-						"fileSystem": "input"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"_id": {
-							"type": "string"
-						},
-						"index": {
-							"type": "integer"
-						},
-						"guid": {
-							"type": "string"
-						},
-						"isActive": {
-							"type": "boolean"
-						},
-						"balance": {
-							"type": "string"
-						},
-						"picture": {
-							"type": "string"
-						},
-						"age": {
-							"type": "integer"
-						},
-						"eyeColor": {
-							"type": "string"
-						},
-						"name": {
-							"type": "string"
-						},
-						"gender": {
-							"type": "string"
-						},
-						"company": {
-							"type": "string"
-						},
-						"email": {
-							"type": "string"
-						},
-						"phone": {
-							"type": "string"
-						},
-						"address": {
-							"type": "string"
-						},
-						"about": {
-							"type": "string"
-						},
-						"registered": {
-							"type": "string"
-						},
-						"latitude": {
-							"type": "number"
-						},
-						"longitude": {
-							"type": "number"
-						},
-						"tags": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"friends": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"id": {
-										"type": "integer"
-									},
-									"name": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"greeting": {
-							"type": "string"
-						},
-						"favoriteFruit": {
-							"type": "string"
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_JSON')]"
 			]
 		}
 	]
