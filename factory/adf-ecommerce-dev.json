@@ -1,0 +1,9 @@
+{
+	"name": "adf-ecommerce-dev",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fd4d32e3-9b4d-45dd-a41b-5f5cdbfd8e4f",
+		"tenantId": "97d78beb-9535-4044-8b4b-3e0fcb1f0be4"
+	}
+}
