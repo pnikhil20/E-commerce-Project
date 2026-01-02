@@ -47,6 +47,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_REST_PRQ1'"
 		},
+		"LS_SFTP_ADLS_PRQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_ADLS_PRQ'"
+		},
+		"LS_SFTP_SINK_PRQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_SINK_PRQ'"
+		},
 		"LS_SNOWFLAKE_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SNOWFLAKE'"
@@ -104,6 +112,14 @@
 			"defaultValue": "https://retoolapi.dev/IxIFRQ/data"
 		},
 		"LS_REST_PRQ1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
+		},
+		"LS_SFTP_ADLS_PRQ_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_SFTP_SINK_PRQ_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
@@ -192,6 +208,12 @@
 					"LS_REST_PRQ1_accountKey": {
 						"value": "[parameters('LS_REST_PRQ1_accountKey')]"
 					},
+					"LS_SFTP_ADLS_PRQ_accountKey": {
+						"value": "[parameters('LS_SFTP_ADLS_PRQ_accountKey')]"
+					},
+					"LS_SFTP_SINK_PRQ_accountKey": {
+						"value": "[parameters('LS_SFTP_SINK_PRQ_accountKey')]"
+					},
 					"LS_SNOWFLAKE_password": {
 						"value": "[parameters('LS_SNOWFLAKE_password')]"
 					},
@@ -233,6 +255,12 @@
 					},
 					"LS_REST_PRQ1_properties_typeProperties_url": {
 						"value": "[parameters('LS_REST_PRQ1_properties_typeProperties_url')]"
+					},
+					"LS_SFTP_ADLS_PRQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_SFTP_ADLS_PRQ_properties_typeProperties_url')]"
+					},
+					"LS_SFTP_SINK_PRQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_SFTP_SINK_PRQ_properties_typeProperties_url')]"
 					},
 					"LS_SNOWFLAKE_properties_typeProperties_database": {
 						"value": "[parameters('LS_SNOWFLAKE_properties_typeProperties_database')]"
@@ -280,6 +308,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'adf-ecommerce-dev_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adf-ecommerce-dev_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-ecommerce-dev_ArmTemplate_1')]"
 			]
 		}
 	]

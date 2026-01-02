@@ -35,6 +35,12 @@
 		"LS_REST_PRQ1_accountKey": {
 			"value": ""
 		},
+		"LS_SFTP_ADLS_PRQ_accountKey": {
+			"value": ""
+		},
+		"LS_SFTP_SINK_PRQ_accountKey": {
+			"value": ""
+		},
 		"LS_SNOWFLAKE_password": {
 			"value": ""
 		},
@@ -78,6 +84,12 @@
 			"value": "https://retoolapi.dev/IxIFRQ/data"
 		},
 		"LS_REST_PRQ1_properties_typeProperties_url": {
+			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
+		},
+		"LS_SFTP_ADLS_PRQ_properties_typeProperties_url": {
+			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_SFTP_SINK_PRQ_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"LS_SNOWFLAKE_properties_typeProperties_database": {
