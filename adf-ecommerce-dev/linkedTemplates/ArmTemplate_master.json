@@ -55,6 +55,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SNWFLK_PRQ'"
 		},
+		"LS_SQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL'"
+		},
+		"LS_SQL_PRQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SQL_PRQ'"
+		},
 		"LS_BULK_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
@@ -110,6 +118,22 @@
 		"LS_SNWFLK_PRQ1_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'LS_SNWFLK_PRQ1'"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DVCINH6110023\\SQLEXPRESS01"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "vbadeproject"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "User123"
+		},
+		"LS_SQL_PRQ_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -174,6 +198,9 @@
 					"LS_SNWFLK_PRQ_accountKey": {
 						"value": "[parameters('LS_SNWFLK_PRQ_accountKey')]"
 					},
+					"LS_SQL_PRQ_accountKey": {
+						"value": "[parameters('LS_SQL_PRQ_accountKey')]"
+					},
 					"LS_BULK_properties_typeProperties_url": {
 						"value": "[parameters('LS_BULK_properties_typeProperties_url')]"
 					},
@@ -215,6 +242,9 @@
 					},
 					"LS_SNWFLK_PRQ1_sasUri": {
 						"value": "[parameters('LS_SNWFLK_PRQ1_sasUri')]"
+					},
+					"LS_SQL_PRQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_SQL_PRQ_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -233,6 +263,18 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"LS_SQL_password": {
+						"value": "[parameters('LS_SQL_password')]"
+					},
+					"LS_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_server')]"
+					},
+					"LS_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_database')]"
+					},
+					"LS_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
 					}
 				}
 			},

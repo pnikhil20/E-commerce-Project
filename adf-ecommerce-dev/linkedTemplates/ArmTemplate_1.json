@@ -6,12 +6,120 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-ecommerce-dev"
+		},
+		"LS_SQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL'"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DVCINH6110023\\SQLEXPRESS01"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "vbadeproject"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "User123"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_EXL')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_EXL",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "excel",
+						"fileSystem": "input"
+					},
+					"sheetIndex": 0
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_EXL_PRQ')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_EXL_PRQ",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "@concat(\n\t'excel/',\n\tformatDateTime(utcNow(), 'yyyy'), '/',\n\tformatDateTime(utcNow(), 'MM'), '/',\n\tformatDateTime(utcNow(), 'dd')\n)",
+							"type": "Expression"
+						},
+						"fileSystem": "input"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "order_id",
+						"type": "UTF8"
+					},
+					{
+						"name": "payment_sequential",
+						"type": "UTF8"
+					},
+					{
+						"name": "payment_type",
+						"type": "UTF8"
+					},
+					{
+						"name": "payment_installments",
+						"type": "UTF8"
+					},
+					{
+						"name": "payment_value",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_JSON')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
@@ -274,6 +382,79 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_PRQ')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_PRQ",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "@concat(\n    'sql/',\n    formatDateTime(utcNow(), 'yyyy'), '/',\n    formatDateTime(utcNow(), 'MM'), '/',\n    formatDateTime(utcNow(), 'dd')\n)",
+							"type": "Expression"
+						},
+						"fileSystem": "input"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "geolocation_zip_code_prefix",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_lat",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_lng",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_city",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_state",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SQL')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SQL_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SQL_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_SQL_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SQL_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "SelfHosted-IntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/PL_BULK')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -487,7 +668,10 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_EXL')]",
+				"[concat(variables('factoryId'), '/datasets/DS_EXL_PRQ')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/PL_JSON')]",
@@ -682,6 +866,129 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_SNOWFLAKE')]",
 				"[concat(variables('factoryId'), '/datasets/DS_SNWFLK_PRQ')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_SQL')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SQL",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "\"order_id\"",
+						"type": "varchar"
+					},
+					{
+						"name": "\"customer_id\"",
+						"type": "varchar"
+					},
+					{
+						"name": "\"order_status\"",
+						"type": "varchar"
+					},
+					{
+						"name": "\"order_purchase_timestamp\"",
+						"type": "varchar"
+					},
+					{
+						"name": "\"order_approved_at\"",
+						"type": "varchar"
+					},
+					{
+						"name": "\"order_delivered_carrier_date\"",
+						"type": "varchar"
+					},
+					{
+						"name": "\"order_delivered_customer_date\"",
+						"type": "varchar"
+					},
+					{
+						"name": "\"order_estimated_delivery_date\"",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "olist_orders_dataset"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_SQL')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_SQL')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CPY_SQL_PRQ",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SqlServerSource",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_SQL",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_SQL_PRQ",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_SQL')]",
+				"[concat(variables('factoryId'), '/datasets/DS_SQL_PRQ')]"
 			]
 		}
 	]

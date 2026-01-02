@@ -41,6 +41,12 @@
 		"LS_SNWFLK_PRQ_accountKey": {
 			"value": ""
 		},
+		"LS_SQL_password": {
+			"value": ""
+		},
+		"LS_SQL_PRQ_accountKey": {
+			"value": ""
+		},
 		"LS_BULK_properties_typeProperties_url": {
 			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
 		},
@@ -82,6 +88,18 @@
 		},
 		"LS_SNWFLK_PRQ1_sasUri": {
 			"value": ""
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"value": "DVCINH6110023\\SQLEXPRESS01"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"value": "vbadeproject"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"value": "User123"
+		},
+		"LS_SQL_PRQ_properties_typeProperties_url": {
+			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		}
 	}
 }
