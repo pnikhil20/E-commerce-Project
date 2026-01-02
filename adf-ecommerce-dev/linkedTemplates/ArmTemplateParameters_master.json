@@ -53,6 +53,12 @@
 		"LS_SQL_PRQ_accountKey": {
 			"value": ""
 		},
+		"LS_SFTP_accountKey": {
+			"value": ""
+		},
+		"LS_SFTP_PRQ1_accountKey": {
+			"value": ""
+		},
 		"LS_BULK_properties_typeProperties_url": {
 			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
 		},
@@ -111,6 +117,12 @@
 			"value": "User123"
 		},
 		"LS_SQL_PRQ_properties_typeProperties_url": {
+			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
+		},
+		"LS_SFTP_properties_typeProperties_url": {
+			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_SFTP_PRQ1_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"containerUri": {
