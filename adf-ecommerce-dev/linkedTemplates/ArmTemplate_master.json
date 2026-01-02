@@ -47,9 +47,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_REST_PRQ1'"
 		},
+		"LS_SFTP_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP'"
+		},
 		"LS_SFTP_ADLS_PRQ_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_ADLS_PRQ'"
+		},
+		"LS_SFTP_PRQ1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_PRQ1'"
 		},
 		"LS_SFTP_SINK_PRQ_accountKey": {
 			"type": "secureString",
@@ -67,17 +75,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQL'"
 		},
+		"LS_SQLSOURCE_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQLSOURCE'"
+		},
+		"LS_SQL_DB_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_DB'"
+		},
 		"LS_SQL_PRQ_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SQL_PRQ'"
-		},
-		"LS_SFTP_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_SFTP'"
-		},
-		"LS_SFTP_PRQ1_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_PRQ1'"
 		},
 		"LS_BULK_properties_typeProperties_url": {
 			"type": "string",
@@ -123,9 +131,17 @@
 			"type": "string",
 			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
+		"LS_SFTP_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
 		"LS_SFTP_ADLS_PRQ_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_SFTP_PRQ1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"LS_SFTP_SINK_PRQ_properties_typeProperties_url": {
 			"type": "string",
@@ -155,15 +171,31 @@
 			"type": "string",
 			"defaultValue": "User123"
 		},
+		"LS_SQLSOURCE_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_SQLSOURCE_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LS_SQLSOURCE_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "NikhilP"
+		},
+		"LS_SQL_DB_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_SQL_DB_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LS_SQL_DB_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "NikhilP"
+		},
 		"LS_SQL_PRQ_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
-		},
-		"LS_SFTP_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
-		},
-		"LS_SFTP_PRQ1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
@@ -224,8 +256,14 @@
 					"LS_REST_PRQ1_accountKey": {
 						"value": "[parameters('LS_REST_PRQ1_accountKey')]"
 					},
+					"LS_SFTP_accountKey": {
+						"value": "[parameters('LS_SFTP_accountKey')]"
+					},
 					"LS_SFTP_ADLS_PRQ_accountKey": {
 						"value": "[parameters('LS_SFTP_ADLS_PRQ_accountKey')]"
+					},
+					"LS_SFTP_PRQ1_accountKey": {
+						"value": "[parameters('LS_SFTP_PRQ1_accountKey')]"
 					},
 					"LS_SFTP_SINK_PRQ_accountKey": {
 						"value": "[parameters('LS_SFTP_SINK_PRQ_accountKey')]"
@@ -236,14 +274,11 @@
 					"LS_SNWFLK_PRQ_accountKey": {
 						"value": "[parameters('LS_SNWFLK_PRQ_accountKey')]"
 					},
-					"LS_SQL_PRQ_accountKey": {
-						"value": "[parameters('LS_SQL_PRQ_accountKey')]"
+					"LS_SQLSOURCE_password": {
+						"value": "[parameters('LS_SQLSOURCE_password')]"
 					},
-					"LS_SFTP_accountKey": {
-						"value": "[parameters('LS_SFTP_accountKey')]"
-					},
-					"LS_SFTP_PRQ1_accountKey": {
-						"value": "[parameters('LS_SFTP_PRQ1_accountKey')]"
+					"LS_SQL_DB_password": {
+						"value": "[parameters('LS_SQL_DB_password')]"
 					},
 					"LS_BULK_properties_typeProperties_url": {
 						"value": "[parameters('LS_BULK_properties_typeProperties_url')]"
@@ -278,8 +313,14 @@
 					"LS_REST_PRQ1_properties_typeProperties_url": {
 						"value": "[parameters('LS_REST_PRQ1_properties_typeProperties_url')]"
 					},
+					"LS_SFTP_properties_typeProperties_url": {
+						"value": "[parameters('LS_SFTP_properties_typeProperties_url')]"
+					},
 					"LS_SFTP_ADLS_PRQ_properties_typeProperties_url": {
 						"value": "[parameters('LS_SFTP_ADLS_PRQ_properties_typeProperties_url')]"
+					},
+					"LS_SFTP_PRQ1_properties_typeProperties_url": {
+						"value": "[parameters('LS_SFTP_PRQ1_properties_typeProperties_url')]"
 					},
 					"LS_SFTP_SINK_PRQ_properties_typeProperties_url": {
 						"value": "[parameters('LS_SFTP_SINK_PRQ_properties_typeProperties_url')]"
@@ -293,14 +334,23 @@
 					"LS_SNWFLK_PRQ1_sasUri": {
 						"value": "[parameters('LS_SNWFLK_PRQ1_sasUri')]"
 					},
-					"LS_SQL_PRQ_properties_typeProperties_url": {
-						"value": "[parameters('LS_SQL_PRQ_properties_typeProperties_url')]"
+					"LS_SQLSOURCE_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQLSOURCE_properties_typeProperties_server')]"
 					},
-					"LS_SFTP_properties_typeProperties_url": {
-						"value": "[parameters('LS_SFTP_properties_typeProperties_url')]"
+					"LS_SQLSOURCE_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQLSOURCE_properties_typeProperties_database')]"
 					},
-					"LS_SFTP_PRQ1_properties_typeProperties_url": {
-						"value": "[parameters('LS_SFTP_PRQ1_properties_typeProperties_url')]"
+					"LS_SQLSOURCE_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQLSOURCE_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_DB_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_DB_properties_typeProperties_server')]"
+					},
+					"LS_SQL_DB_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_DB_properties_typeProperties_database')]"
+					},
+					"LS_SQL_DB_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_DB_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -320,17 +370,11 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"LS_SQL_password": {
-						"value": "[parameters('LS_SQL_password')]"
+					"LS_SQL_PRQ_accountKey": {
+						"value": "[parameters('LS_SQL_PRQ_accountKey')]"
 					},
-					"LS_SQL_properties_typeProperties_server": {
-						"value": "[parameters('LS_SQL_properties_typeProperties_server')]"
-					},
-					"LS_SQL_properties_typeProperties_database": {
-						"value": "[parameters('LS_SQL_properties_typeProperties_database')]"
-					},
-					"LS_SQL_properties_typeProperties_userName": {
-						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
+					"LS_SQL_PRQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_SQL_PRQ_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -351,6 +395,18 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"LS_SQL_password": {
+						"value": "[parameters('LS_SQL_password')]"
+					},
+					"LS_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_server')]"
+					},
+					"LS_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_database')]"
+					},
+					"LS_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
 					}
 				}
 			},

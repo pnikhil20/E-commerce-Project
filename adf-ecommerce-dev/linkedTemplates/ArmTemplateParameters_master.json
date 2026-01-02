@@ -35,7 +35,13 @@
 		"LS_REST_PRQ1_accountKey": {
 			"value": ""
 		},
+		"LS_SFTP_accountKey": {
+			"value": ""
+		},
 		"LS_SFTP_ADLS_PRQ_accountKey": {
+			"value": ""
+		},
+		"LS_SFTP_PRQ1_accountKey": {
 			"value": ""
 		},
 		"LS_SFTP_SINK_PRQ_accountKey": {
@@ -50,13 +56,13 @@
 		"LS_SQL_password": {
 			"value": ""
 		},
+		"LS_SQLSOURCE_password": {
+			"value": ""
+		},
+		"LS_SQL_DB_password": {
+			"value": ""
+		},
 		"LS_SQL_PRQ_accountKey": {
-			"value": ""
-		},
-		"LS_SFTP_accountKey": {
-			"value": ""
-		},
-		"LS_SFTP_PRQ1_accountKey": {
 			"value": ""
 		},
 		"LS_BULK_properties_typeProperties_url": {
@@ -92,8 +98,14 @@
 		"LS_REST_PRQ1_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
+		"LS_SFTP_properties_typeProperties_url": {
+			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
 		"LS_SFTP_ADLS_PRQ_properties_typeProperties_url": {
 			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_SFTP_PRQ1_properties_typeProperties_url": {
+			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"LS_SFTP_SINK_PRQ_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
@@ -116,13 +128,25 @@
 		"LS_SQL_properties_typeProperties_userName": {
 			"value": "User123"
 		},
+		"LS_SQLSOURCE_properties_typeProperties_server": {
+			"value": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_SQLSOURCE_properties_typeProperties_database": {
+			"value": "sql-db-vb-dev"
+		},
+		"LS_SQLSOURCE_properties_typeProperties_userName": {
+			"value": "NikhilP"
+		},
+		"LS_SQL_DB_properties_typeProperties_server": {
+			"value": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_SQL_DB_properties_typeProperties_database": {
+			"value": "sql-db-vb-dev"
+		},
+		"LS_SQL_DB_properties_typeProperties_userName": {
+			"value": "NikhilP"
+		},
 		"LS_SQL_PRQ_properties_typeProperties_url": {
-			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
-		},
-		"LS_SFTP_properties_typeProperties_url": {
-			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
-		},
-		"LS_SFTP_PRQ1_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"containerUri": {

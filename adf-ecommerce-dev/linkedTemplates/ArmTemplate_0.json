@@ -47,9 +47,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_REST_PRQ1'"
 		},
+		"LS_SFTP_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP'"
+		},
 		"LS_SFTP_ADLS_PRQ_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_ADLS_PRQ'"
+		},
+		"LS_SFTP_PRQ1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_PRQ1'"
 		},
 		"LS_SFTP_SINK_PRQ_accountKey": {
 			"type": "secureString",
@@ -63,17 +71,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SNWFLK_PRQ'"
 		},
-		"LS_SQL_PRQ_accountKey": {
+		"LS_SQLSOURCE_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_SQL_PRQ'"
+			"metadata": "Secure string for 'password' of 'LS_SQLSOURCE'"
 		},
-		"LS_SFTP_accountKey": {
+		"LS_SQL_DB_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_SFTP'"
-		},
-		"LS_SFTP_PRQ1_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_PRQ1'"
+			"metadata": "Secure string for 'password' of 'LS_SQL_DB'"
 		},
 		"LS_BULK_properties_typeProperties_url": {
 			"type": "string",
@@ -119,9 +123,17 @@
 			"type": "string",
 			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
+		"LS_SFTP_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
 		"LS_SFTP_ADLS_PRQ_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_SFTP_PRQ1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"LS_SFTP_SINK_PRQ_properties_typeProperties_url": {
 			"type": "string",
@@ -139,17 +151,29 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'LS_SNWFLK_PRQ1'"
 		},
-		"LS_SQL_PRQ_properties_typeProperties_url": {
+		"LS_SQLSOURCE_properties_typeProperties_server": {
 			"type": "string",
-			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
+			"defaultValue": "sql-srvr-vb-dev111.database.windows.net"
 		},
-		"LS_SFTP_properties_typeProperties_url": {
+		"LS_SQLSOURCE_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
+			"defaultValue": "sql-db-vb-dev"
 		},
-		"LS_SFTP_PRQ1_properties_typeProperties_url": {
+		"LS_SQLSOURCE_properties_typeProperties_userName": {
 			"type": "string",
-			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
+			"defaultValue": "NikhilP"
+		},
+		"LS_SQL_DB_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_SQL_DB_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LS_SQL_DB_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "NikhilP"
 		}
 	},
 	"variables": {
@@ -342,6 +366,23 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/LS_SFTP')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_SFTP_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SFTP_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_SFTP_ADLS_PRQ')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -353,6 +394,23 @@
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('LS_SFTP_ADLS_PRQ_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SFTP_PRQ1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_SFTP_PRQ1_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SFTP_PRQ1_accountKey')]"
 					}
 				}
 			},
@@ -429,61 +487,44 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/LS_SQL_PRQ')]",
+			"name": "[concat(parameters('factoryName'), '/LS_SQLSOURCE')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"type": "AzureBlobFS",
+				"type": "AzureSqlDatabase",
 				"typeProperties": {
-					"url": "[parameters('LS_SQL_PRQ_properties_typeProperties_url')]",
-					"accountKey": {
+					"server": "[parameters('LS_SQLSOURCE_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SQLSOURCE_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_SQLSOURCE_properties_typeProperties_userName')]",
+					"password": {
 						"type": "SecureString",
-						"value": "[parameters('LS_SQL_PRQ_accountKey')]"
+						"value": "[parameters('LS_SQLSOURCE_password')]"
 					}
 				}
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SelfHosted-IntegrationRuntime')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_SFTP')]",
+			"name": "[concat(parameters('factoryName'), '/LS_SQL_DB')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"type": "AzureBlobFS",
+				"type": "AzureSqlDatabase",
 				"typeProperties": {
-					"url": "[parameters('LS_SFTP_properties_typeProperties_url')]",
-					"accountKey": {
+					"server": "[parameters('LS_SQL_DB_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SQL_DB_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_SQL_DB_properties_typeProperties_userName')]",
+					"password": {
 						"type": "SecureString",
-						"value": "[parameters('LS_SFTP_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_SFTP_PRQ1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('LS_SFTP_PRQ1_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('LS_SFTP_PRQ1_accountKey')]"
+						"value": "[parameters('LS_SQL_DB_password')]"
 					}
 				}
 			},
