@@ -14,6 +14,9 @@
 		"LS_CSV_accountKey": {
 			"value": ""
 		},
+		"LS_CSV_EXL_password": {
+			"value": ""
+		},
 		"LS_CSV_PRQ_accountKey": {
 			"value": ""
 		},
@@ -62,6 +65,9 @@
 		"LS_SQL_DB_password": {
 			"value": ""
 		},
+		"LS_SQL_JOB_DTLS_password": {
+			"value": ""
+		},
 		"LS_SQL_PRQ_accountKey": {
 			"value": ""
 		},
@@ -73,6 +79,15 @@
 		},
 		"LS_CSV_properties_typeProperties_url": {
 			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_CSV_EXL_properties_typeProperties_server": {
+			"value": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_CSV_EXL_properties_typeProperties_database": {
+			"value": "sql-db-vb-dev"
+		},
+		"LS_CSV_EXL_properties_typeProperties_userName": {
+			"value": "NikhilP"
 		},
 		"LS_CSV_PRQ_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
@@ -144,6 +159,15 @@
 			"value": "sql-db-vb-dev"
 		},
 		"LS_SQL_DB_properties_typeProperties_userName": {
+			"value": "NikhilP"
+		},
+		"LS_SQL_JOB_DTLS_properties_typeProperties_server": {
+			"value": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_SQL_JOB_DTLS_properties_typeProperties_database": {
+			"value": "sql-db-vb-dev"
+		},
+		"LS_SQL_JOB_DTLS_properties_typeProperties_userName": {
 			"value": "NikhilP"
 		},
 		"LS_SQL_PRQ_properties_typeProperties_url": {

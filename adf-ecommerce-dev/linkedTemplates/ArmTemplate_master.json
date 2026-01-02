@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_CSV'"
 		},
+		"LS_CSV_EXL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_CSV_EXL'"
+		},
 		"LS_CSV_PRQ_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_CSV_PRQ'"
@@ -83,6 +87,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQL_DB'"
 		},
+		"LS_SQL_JOB_DTLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_JOB_DTLS'"
+		},
 		"LS_SQL_PRQ_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SQL_PRQ'"
@@ -98,6 +106,18 @@
 		"LS_CSV_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsecommercerawdev.dfs.core.windows.net/"
+		},
+		"LS_CSV_EXL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_CSV_EXL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LS_CSV_EXL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "NikhilP"
 		},
 		"LS_CSV_PRQ_properties_typeProperties_url": {
 			"type": "string",
@@ -195,6 +215,18 @@
 			"type": "string",
 			"defaultValue": "NikhilP"
 		},
+		"LS_SQL_JOB_DTLS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_SQL_JOB_DTLS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LS_SQL_JOB_DTLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "NikhilP"
+		},
 		"LS_SQL_PRQ_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
@@ -234,6 +266,9 @@
 					},
 					"LS_CSV_accountKey": {
 						"value": "[parameters('LS_CSV_accountKey')]"
+					},
+					"LS_CSV_EXL_password": {
+						"value": "[parameters('LS_CSV_EXL_password')]"
 					},
 					"LS_CSV_PRQ_accountKey": {
 						"value": "[parameters('LS_CSV_PRQ_accountKey')]"
@@ -277,9 +312,6 @@
 					"LS_SQLSOURCE_password": {
 						"value": "[parameters('LS_SQLSOURCE_password')]"
 					},
-					"LS_SQL_DB_password": {
-						"value": "[parameters('LS_SQL_DB_password')]"
-					},
 					"LS_BULK_properties_typeProperties_url": {
 						"value": "[parameters('LS_BULK_properties_typeProperties_url')]"
 					},
@@ -288,6 +320,15 @@
 					},
 					"LS_CSV_properties_typeProperties_url": {
 						"value": "[parameters('LS_CSV_properties_typeProperties_url')]"
+					},
+					"LS_CSV_EXL_properties_typeProperties_server": {
+						"value": "[parameters('LS_CSV_EXL_properties_typeProperties_server')]"
+					},
+					"LS_CSV_EXL_properties_typeProperties_database": {
+						"value": "[parameters('LS_CSV_EXL_properties_typeProperties_database')]"
+					},
+					"LS_CSV_EXL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_CSV_EXL_properties_typeProperties_userName')]"
 					},
 					"LS_CSV_PRQ_properties_typeProperties_url": {
 						"value": "[parameters('LS_CSV_PRQ_properties_typeProperties_url')]"
@@ -342,15 +383,6 @@
 					},
 					"LS_SQLSOURCE_properties_typeProperties_userName": {
 						"value": "[parameters('LS_SQLSOURCE_properties_typeProperties_userName')]"
-					},
-					"LS_SQL_DB_properties_typeProperties_server": {
-						"value": "[parameters('LS_SQL_DB_properties_typeProperties_server')]"
-					},
-					"LS_SQL_DB_properties_typeProperties_database": {
-						"value": "[parameters('LS_SQL_DB_properties_typeProperties_database')]"
-					},
-					"LS_SQL_DB_properties_typeProperties_userName": {
-						"value": "[parameters('LS_SQL_DB_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -370,8 +402,32 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"LS_SQL_DB_password": {
+						"value": "[parameters('LS_SQL_DB_password')]"
+					},
+					"LS_SQL_JOB_DTLS_password": {
+						"value": "[parameters('LS_SQL_JOB_DTLS_password')]"
+					},
 					"LS_SQL_PRQ_accountKey": {
 						"value": "[parameters('LS_SQL_PRQ_accountKey')]"
+					},
+					"LS_SQL_DB_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_DB_properties_typeProperties_server')]"
+					},
+					"LS_SQL_DB_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_DB_properties_typeProperties_database')]"
+					},
+					"LS_SQL_DB_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_DB_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_JOB_DTLS_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_JOB_DTLS_properties_typeProperties_server')]"
+					},
+					"LS_SQL_JOB_DTLS_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_JOB_DTLS_properties_typeProperties_database')]"
+					},
+					"LS_SQL_JOB_DTLS_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_JOB_DTLS_properties_typeProperties_userName')]"
 					},
 					"LS_SQL_PRQ_properties_typeProperties_url": {
 						"value": "[parameters('LS_SQL_PRQ_properties_typeProperties_url')]"
