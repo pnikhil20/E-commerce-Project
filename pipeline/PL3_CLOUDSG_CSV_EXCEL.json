@@ -70,10 +70,32 @@
 							]
 						},
 						{
-							"value": "AWS"
+							"value": "AWS",
+							"activities": [
+								{
+									"name": "Wait1",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 1
+									}
+								}
+							]
 						},
 						{
-							"value": "GCP"
+							"value": "GCP",
+							"activities": [
+								{
+									"name": "Wait2",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 1
+									}
+								}
+							]
 						}
 					]
 				}
