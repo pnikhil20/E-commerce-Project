@@ -2,7 +2,7 @@
 	"name": "Tr_sample_snowflake",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
