@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "adf-ecommerce-dev"
 		},
+		"LS_AZBLB_EVENT_connectionString": {
+			"value": ""
+		},
 		"LS_AZSQL_EXCEL_password": {
 			"value": ""
 		},
@@ -72,9 +75,6 @@
 			"value": ""
 		},
 		"LS_SQL_PRQ_accountKey": {
-			"value": ""
-		},
-		"LS_AZBLB_EVENT_connectionString": {
 			"value": ""
 		},
 		"LS_SWFLK_SRC_accountKey": {
@@ -191,14 +191,14 @@
 		"LS_SQL_PRQ_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
+		"LS_SWFLK_SRC_properties_typeProperties_url": {
+			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
+		},
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"value": "Tr_sample_csv"
 		},
 		"Tr_sample_excel_properties_PL1_MASTER_parameters_Trigger": {
 			"value": "Tr_sample_excel"
-		},
-		"LS_SWFLK_SRC_properties_typeProperties_url": {
-			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"Tr_sample_snowflake_properties_typeProperties_scope": {
 			"value": "/subscriptions/3f4c210b-1165-44cd-83af-297efa38088b/resourceGroups/rg_ecommerce_dev/providers/Microsoft.Storage/storageAccounts/adlsecommerceblobsnow"

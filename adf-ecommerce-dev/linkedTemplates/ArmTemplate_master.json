@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-ecommerce-dev"
 		},
+		"LS_AZBLB_EVENT_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_AZBLB_EVENT'"
+		},
 		"LS_AZSQL_EXCEL_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_AZSQL_EXCEL'"
@@ -98,10 +102,6 @@
 		"LS_SQL_PRQ_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SQL_PRQ'"
-		},
-		"LS_AZBLB_EVENT_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_AZBLB_EVENT'"
 		},
 		"LS_SWFLK_SRC_accountKey": {
 			"type": "secureString",
@@ -255,6 +255,10 @@
 			"type": "string",
 			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
+		"LS_SWFLK_SRC_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
+		},
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
@@ -262,10 +266,6 @@
 		"Tr_sample_excel_properties_PL1_MASTER_parameters_Trigger": {
 			"type": "string",
 			"defaultValue": "Tr_sample_excel"
-		},
-		"LS_SWFLK_SRC_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
 		"Tr_sample_snowflake_properties_typeProperties_scope": {
 			"type": "string",
@@ -297,6 +297,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"LS_AZBLB_EVENT_connectionString": {
+						"value": "[parameters('LS_AZBLB_EVENT_connectionString')]"
 					},
 					"LS_AZSQL_EXCEL_password": {
 						"value": "[parameters('LS_AZSQL_EXCEL_password')]"
@@ -420,9 +423,6 @@
 					},
 					"LS_SNWFLK_PRQ_properties_typeProperties_url": {
 						"value": "[parameters('LS_SNWFLK_PRQ_properties_typeProperties_url')]"
-					},
-					"LS_SNWFLK_PRQ1_sasUri": {
-						"value": "[parameters('LS_SNWFLK_PRQ1_sasUri')]"
 					}
 				}
 			},
@@ -454,11 +454,11 @@
 					"LS_SQL_PRQ_accountKey": {
 						"value": "[parameters('LS_SQL_PRQ_accountKey')]"
 					},
-					"LS_AZBLB_EVENT_connectionString": {
-						"value": "[parameters('LS_AZBLB_EVENT_connectionString')]"
-					},
 					"LS_SWFLK_SRC_accountKey": {
 						"value": "[parameters('LS_SWFLK_SRC_accountKey')]"
+					},
+					"LS_SNWFLK_PRQ1_sasUri": {
+						"value": "[parameters('LS_SNWFLK_PRQ1_sasUri')]"
 					},
 					"LS_SQLSOURCE_properties_typeProperties_server": {
 						"value": "[parameters('LS_SQLSOURCE_properties_typeProperties_server')]"
