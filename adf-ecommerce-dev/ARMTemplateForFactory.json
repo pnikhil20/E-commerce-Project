@@ -506,11 +506,16 @@
 											"userProperties": [],
 											"typeProperties": {
 												"pipeline": {
-													"referenceName": "PL_CSV",
+													"referenceName": "PL_SWITCH_CSV_EXCEL",
 													"type": "PipelineReference"
 												},
 												"waitOnCompletion": true,
-												"parameters": {}
+												"parameters": {
+													"Trigger": {
+														"value": "@pipeline().parameters.Trigger",
+														"type": "Expression"
+													}
+												}
 											}
 										}
 									]
@@ -564,7 +569,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_SQLSOURCE')]",
-				"[concat(variables('factoryId'), '/pipelines/PL_CSV')]"
+				"[concat(variables('factoryId'), '/pipelines/PL_SWITCH_CSV_EXCEL')]"
 			]
 		},
 		{
@@ -739,6 +744,7 @@
 								"sqlReaderStoredProcedureName": "[[dbo].[vb_get_job_dtls]",
 								"storedProcedureParameters": {
 									"Triggername": {
+										"type": "String",
 										"value": {
 											"value": "@pipeline().parameters.Trigger",
 											"type": "Expression"
@@ -779,7 +785,7 @@
 							"storedProcedureParameters": {
 								"jobid": {
 									"value": {
-										"value": "jobid  @activity('LKUP_JOB_DETAILS').output.firstRow.jobid",
+										"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.jobid",
 										"type": "Expression"
 									},
 									"type": "Int32"
@@ -1348,7 +1354,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Switch_CSV_EXCEL_FILES')]",
+			"name": "[concat(parameters('factoryName'), '/PL_SWITCH_CSV_EXCEL')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1383,7 +1389,7 @@
 						}
 					},
 					{
-						"name": "Switch_CSV_EXCEL_FILES",
+						"name": "SWITCH_CSV_EXCEL",
 						"type": "Switch",
 						"dependsOn": [
 							{
