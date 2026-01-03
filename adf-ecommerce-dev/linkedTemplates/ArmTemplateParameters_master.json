@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "adf-ecommerce-dev"
 		},
+		"LS_AZSQL_EXCEL_password": {
+			"value": ""
+		},
 		"LS_BULK_accountKey": {
 			"value": ""
 		},
@@ -70,6 +73,15 @@
 		},
 		"LS_SQL_PRQ_accountKey": {
 			"value": ""
+		},
+		"LS_AZSQL_EXCEL_properties_typeProperties_server": {
+			"value": "sql-srvr-vb-dev111.database.windows.net"
+		},
+		"LS_AZSQL_EXCEL_properties_typeProperties_database": {
+			"value": "sql-db-vb-dev"
+		},
+		"LS_AZSQL_EXCEL_properties_typeProperties_userName": {
+			"value": "NikhilP"
 		},
 		"LS_BULK_properties_typeProperties_url": {
 			"value": "https://adlsecommercerawdev.dfs.core.windows.net/"
