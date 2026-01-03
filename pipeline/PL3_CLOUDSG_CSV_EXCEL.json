@@ -61,7 +61,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"pipeline": {
-											"referenceName": "Switch_CSV_EXCEL_FILES",
+											"referenceName": "PL_SWITCH_CSV_EXCEL",
 											"type": "PipelineReference"
 										},
 										"waitOnCompletion": true,

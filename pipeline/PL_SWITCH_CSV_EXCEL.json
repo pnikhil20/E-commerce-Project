@@ -1,5 +1,5 @@
 {
-	"name": "Switch_CSV_EXCEL_FILES",
+	"name": "PL_SWITCH_CSV_EXCEL",
 	"properties": {
 		"activities": [
 			{
@@ -31,7 +31,7 @@
 				}
 			},
 			{
-				"name": "Switch_CSV_EXCEL_FILES",
+				"name": "SWITCH_CSV_EXCEL",
 				"type": "Switch",
 				"dependsOn": [
 					{
