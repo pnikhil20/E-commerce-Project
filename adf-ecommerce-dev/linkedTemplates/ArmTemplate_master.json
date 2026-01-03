@@ -99,6 +99,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_SQL_PRQ'"
 		},
+		"LS_AZBLB_EVENT_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_AZBLB_EVENT'"
+		},
+		"LS_SWFLK_SRC_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SWFLK_SRC'"
+		},
 		"LS_AZSQL_EXCEL_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "sql-srvr-vb-dev111.database.windows.net"
@@ -254,6 +262,14 @@
 		"Tr_sample_excel_properties_PL1_MASTER_parameters_Trigger": {
 			"type": "string",
 			"defaultValue": "Tr_sample_excel"
+		},
+		"LS_SWFLK_SRC_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsecommercesourcedev.dfs.core.windows.net/"
+		},
+		"Tr_sample_snowflake_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/3f4c210b-1165-44cd-83af-297efa38088b/resourceGroups/rg_ecommerce_dev/providers/Microsoft.Storage/storageAccounts/adlsecommerceblobsnow"
 		},
 		"containerUri": {
 			"type": "string",
@@ -438,6 +454,12 @@
 					"LS_SQL_PRQ_accountKey": {
 						"value": "[parameters('LS_SQL_PRQ_accountKey')]"
 					},
+					"LS_AZBLB_EVENT_connectionString": {
+						"value": "[parameters('LS_AZBLB_EVENT_connectionString')]"
+					},
+					"LS_SWFLK_SRC_accountKey": {
+						"value": "[parameters('LS_SWFLK_SRC_accountKey')]"
+					},
 					"LS_SQLSOURCE_properties_typeProperties_server": {
 						"value": "[parameters('LS_SQLSOURCE_properties_typeProperties_server')]"
 					},
@@ -467,6 +489,9 @@
 					},
 					"LS_SQL_PRQ_properties_typeProperties_url": {
 						"value": "[parameters('LS_SQL_PRQ_properties_typeProperties_url')]"
+					},
+					"LS_SWFLK_SRC_properties_typeProperties_url": {
+						"value": "[parameters('LS_SWFLK_SRC_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -499,9 +524,6 @@
 					},
 					"LS_SQL_properties_typeProperties_userName": {
 						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
-					},
-					"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
-						"value": "[parameters('Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger')]"
 					}
 				}
 			},
@@ -522,6 +544,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"Tr_sample_snowflake_properties_typeProperties_scope": {
+						"value": "[parameters('Tr_sample_snowflake_properties_typeProperties_scope')]"
+					},
+					"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+						"value": "[parameters('Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger')]"
 					},
 					"Tr_sample_excel_properties_PL1_MASTER_parameters_Trigger": {
 						"value": "[parameters('Tr_sample_excel_properties_PL1_MASTER_parameters_Trigger')]"
