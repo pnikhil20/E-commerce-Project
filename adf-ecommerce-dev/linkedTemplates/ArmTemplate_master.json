@@ -251,6 +251,10 @@
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
 		},
+		"Tr_sample_excel_properties_PL1_MASTER_parameters_Trigger": {
+			"type": "string",
+			"defaultValue": "Tr_sample_excel"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -503,6 +507,29 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'adf-ecommerce-dev_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "adf-ecommerce-dev_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Tr_sample_excel_properties_PL1_MASTER_parameters_Trigger": {
+						"value": "[parameters('Tr_sample_excel_properties_PL1_MASTER_parameters_Trigger')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-ecommerce-dev_ArmTemplate_2')]"
 			]
 		}
 	]

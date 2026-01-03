@@ -188,6 +188,9 @@
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"value": "Tr_sample_csv"
 		},
+		"Tr_sample_excel_properties_PL1_MASTER_parameters_Trigger": {
+			"value": "Tr_sample_excel"
+		},
 		"containerUri": {
 			"value": ""
 		},
