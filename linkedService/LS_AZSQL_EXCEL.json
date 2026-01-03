@@ -1,0 +1,17 @@
+{
+	"name": "LS_AZSQL_EXCEL",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sql-srvr-vb-dev111.database.windows.net",
+			"database": "sql-db-vb-dev",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "NikhilP",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDEzMDgwMjhDLUYxMUItNDNENi04OEVDLUQwNEMzMDkxMzNDMV9jNzVhMjRlNS1jZjFiLTRmOTUtOTg1OS01MzEwZGE1MDhkMGEiDQp9"
+		}
+	}
+}
