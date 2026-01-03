@@ -173,6 +173,9 @@
 		"LS_SQL_PRQ_properties_typeProperties_url": {
 			"value": "https://adlsecommercesourcedev.dfs.core.windows.net/"
 		},
+		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+			"value": "Tr_sample_csv"
+		},
 		"containerUri": {
 			"value": ""
 		},
