@@ -1804,7 +1804,7 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "data_0_0_0.snappy.parquet",
-						"folderPath": "snowflake/2026/01/01",
+						"folderPath": "snowflake/2026/01/11",
 						"container": "input"
 					},
 					"compressionCodec": "snappy"
